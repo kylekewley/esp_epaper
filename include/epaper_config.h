@@ -103,7 +103,7 @@ typedef struct {
     uint16_t height;            // Override height (0 = use default)
     bool mirror_x;
     bool mirror_y;
-    uint8_t rotation;           // 0, 90, 180, 270
+    int rotation;           // 0, 90, 180, 270
 } epd_panel_config_t;
 
 // Full device configuration

@@ -169,6 +169,7 @@ esp_err_t epd_get_info(epd_handle_t handle, epd_panel_info_t *info)
     info->height = dev->height;
     info->buffer_size = dev->buffer_size;
     info->color_mode = dev->panel->color_mode;
+    info->rotation = dev->config.panel.rotation;
     return ESP_OK;
 }
 

@@ -19,6 +19,7 @@ typedef struct {
     uint16_t height;
     uint32_t buffer_size;       // In bytes
     epd_color_mode_t color_mode;
+    int rotation;               // 0/90/180/270 degrees
 } epd_panel_info_t;
 
 /**

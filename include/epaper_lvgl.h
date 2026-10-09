@@ -17,6 +17,7 @@ typedef struct {
     epd_dither_mode_t dither_mode;  // Dithering algorithm
     bool use_partial_refresh;       // Enable partial refresh optimization
     uint32_t partial_threshold;     // Min dirty area (pixels) for partial refresh
+    int rotation_deg;               // 0/90/180/270; -1 uses the panel's configured rotation
 } epd_lvgl_config_t;
 
 #define EPD_LVGL_CONFIG_DEFAULT() { \
@@ -25,6 +26,7 @@ typedef struct {
     .dither_mode = EPD_DITHER_NONE, \
     .use_partial_refresh = false, \
     .partial_threshold = 1000, \
+    .rotation_deg = -1, \
 }
 
 /**
@@ -47,6 +49,16 @@ typedef struct {
  * @endcode
  */
 lv_display_t* epd_lvgl_init(const epd_lvgl_config_t *config);
+
+/**
+ * @brief Convert degrees to LVGL display rotation enum
+ */
+lv_display_rotation_t epd_lvgl_rotation_from_degrees(int degrees);
+
+/**
+ * @brief Set the display rotation for the LVGL e-paper driver
+ */
+void epd_lvgl_set_rotation(lv_display_t *disp, lv_display_rotation_t rotation);
 
 /**
  * @brief Deinitialize LVGL e-paper driver
